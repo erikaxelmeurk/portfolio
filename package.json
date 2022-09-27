@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "react-hide-on-scroll": "^1.1.4",
+    "react-smooth-scrolling": "^1.0.2",
     "use-scroll-position": "^0.0.4"
   }
 }

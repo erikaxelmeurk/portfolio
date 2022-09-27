@@ -30,8 +30,9 @@ const NavLink = styled.a`
     font-family: Montserrat;
     font-weight: 550;
     font-size: 14px;
-    margin-right: 2%; 
-    margin-left: 2%;
+    margin-right: 5%; 
+    margin-left: 5%;
+    letter-spacing: 2px;
 `;
 
 const NavbarDivLeft = styled.div`
@@ -60,17 +61,19 @@ const NavbarDivRight = styled.div`
 
 const Socials = styled.div`
     display: inline-flex;
+    margin-right: 8%;
 `;
 
 const InstagramIconContainer = styled.div`
-    width: 4%;
+    width: 5%;
     margin-left: auto; 
     margin-right: 2%;
+
 
 `;
 
 const LinkedInIconContainer = styled.div`
-    width: 4%;
+    width: 5%;
     margin-right: 2%;
 `;
 
@@ -81,7 +84,7 @@ const NavbarLinkContainer = styled.div`
     position: fixed;
     top: 0;
     z-index: 1;
-    margin-top: 10px;
+    margin-top: 2%;
 `;
 
 export default Navbar;
