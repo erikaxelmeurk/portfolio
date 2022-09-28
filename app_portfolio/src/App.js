@@ -5,6 +5,10 @@ import {About} from './about';
 import styled, { createGlobalStyle } from "styled-components";
 import './App.css';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import UniQuiz from './UniQuiz';
+import WallPlanner from './WallPlanner';
+import SafetyVR from './SafetyVR';
+import Dumpling from './Dumpling';
 
 function App() { 
   return (
@@ -12,8 +16,12 @@ function App() {
       <AppContainer>
         <GlobalStyle />
         <Navbar/>
-        <Hero></Hero>
-        <About></About>
+        <Hero/>
+        <About/>
+        <UniQuiz/>
+        <WallPlanner/>
+        <SafetyVR/>
+        <Dumpling/>
       </AppContainer>
     </ParallaxProvider>
   );

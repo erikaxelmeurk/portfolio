@@ -2,9 +2,11 @@ body {
     margin: 0 !important;
     padding: 0;
     height: 2000px;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
-    overflow-y: scroll; 
+    /*-ms-overflow-style: none; /* for Internet Explorer, Edge */
+    /*scrollbar-width: none; /* for Firefox */
+   /* overflow-y: scroll; */
+   scroll-behavior: smooth;
+   scroll-snap-stop: always;
   }
   *, html {
     margin:0;
@@ -12,5 +14,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+  /*display: none; /* for Chrome, Safari, and Opera */
 }
+
+html { scroll-behavior: smooth; }

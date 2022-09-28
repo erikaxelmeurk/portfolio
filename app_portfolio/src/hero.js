@@ -1,8 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import ErikProfil from "./images/ErikProfil.jpg";
-import { useParallax } from 'react-scroll-parallax';
 import { ArrowDown } from '@styled-icons/bootstrap/ArrowDown';
+
+function throttle (callbackFn, limit) {
+    let wait = false;                  
+    return function () {              
+        if (!wait) {                  
+            callbackFn.call();           
+            wait = true;               
+            setTimeout(function () {   
+                wait = false;          
+            }, limit);
+        }
+    }
+}
 
 function Hero (props) {
     const HeroNameRef = useRef();
@@ -25,7 +37,7 @@ function Hero (props) {
         }, []);
 
     useEffect(() => {
-        window.addEventListener("scroll", getPosition);
+        window.addEventListener("scroll", throttle(getPosition, 5));
         }, []);
         
     return (
@@ -34,17 +46,15 @@ function Hero (props) {
                 <TextAndButtonContainer>
                     <TextContainer>
                         <ErikHero ref = {HeroNameRef} opacity={HeroNamePos}>Erik Meurk</ErikHero>
-                        <ErikTitles ref = {HeroTitlesRef} opacity={HeroTitlesPos}>UX/front-end/photographer</ErikTitles>
+                        <ErikTitles ref = {HeroTitlesRef} opacity={HeroTitlesPos}>UX/Front-end/VR</ErikTitles>
                     </TextContainer>
                     <Contact ref = {HeroButtonRef} opacity={HeroButtonPos}>contact</Contact>
                 </TextAndButtonContainer>
             <ReadMoreContainer opacity={HeroNamePos}>
                 <ReadMore>read more</ReadMore>
-                <ArrowIcon></ArrowIcon>
             </ReadMoreContainer>
             </HeroContainer>
-            
-            
+
             <ImgContainer>
                 <ImgErik opacity={HeroNamePos}>
                     <img src={ErikProfil} width="100%"></img>
@@ -101,8 +111,15 @@ const ReadMore = styled.p`
 const ArrowIcon = styled(ArrowDown)`
   color: #E38800;
   width: 30px;
+  height: 30px;
+  position: fixed;
   border: solid;
-  border-radius: 200px;
+  border-color: #FFFFFF;
+  border-radius: 100%;
+  padding: 2px;
+  bottom: 5%;
+  left: 28%;
+  opacity: ${props => props.opacity};
 `
 
 const TextContainer = styled.div`
