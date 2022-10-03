@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import UniQuizImg from "./images/UniQuiz.png";
-import {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS} from './styledComponents';
+import {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS, UnorderedListCSS} from './styledComponents';
 
 function UniQuiz (props) {
     return (
@@ -12,8 +12,13 @@ function UniQuiz (props) {
             </ImgContainer>
             <ProjectInfoContainer>
                 <TextContainer>
-                        <ProjectTitle>UniQuiz</ProjectTitle>
-                        <ProjectDescription>An interactive online multiplayer music quiz developed in <UnderLine>React</UnderLine> that generates unique playlists by combining songs that the players have in common using the <UnderLine>Spotify API</UnderLine>. We call it the music quiz that’s always fun!</ProjectDescription>
+                    <ProjectTitle>UniQuiz</ProjectTitle>
+                    <ProjectDescription>An interactive online multiplayer music quiz developed in React that generates unique playlists by combining songs that the players have in common using the Spotify API. We call it the music quiz that’s always fun for everyone!</ProjectDescription>
+                    <UnorderedList>
+                        <li>React</li>
+                        <li>Firebase</li>
+                        <li>Spotify API</li>
+                    </UnorderedList>
                     <ReadMore>read more</ReadMore>
                 </TextContainer>
             </ProjectInfoContainer>
@@ -23,7 +28,6 @@ function UniQuiz (props) {
 
 const ContentContainer = styled.div`
     ${ContentContainerCSS}
-    margin-top: 400px;
 `;
 
 const ImgContainer = styled.div`
@@ -56,6 +60,10 @@ const ReadMore = styled.button`
 
 const UnderLine = styled.span`
     ${UnderLineCSS}
+`;
+
+const UnorderedList = styled.ul`
+    ${UnorderedListCSS}
 `;
 
 export default UniQuiz;

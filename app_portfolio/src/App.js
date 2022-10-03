@@ -9,6 +9,8 @@ import UniQuiz from './UniQuiz';
 import WallPlanner from './WallPlanner';
 import SafetyVR from './SafetyVR';
 import Dumpling from './Dumpling';
+import Mirow from './Mirow';
+import LinesRight from './LinesRight';
 
 function App() { 
   return (
@@ -16,12 +18,14 @@ function App() {
       <AppContainer>
         <GlobalStyle />
         <Navbar/>
+        <LinesRight/>
         <Hero/>
         <About/>
-        <UniQuiz/>
-        <WallPlanner/>
         <SafetyVR/>
+        <WallPlanner/>
+        <UniQuiz/>
         <Dumpling/>
+        <Mirow/>
       </AppContainer>
     </ParallaxProvider>
   );

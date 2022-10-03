@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import Dumpling1 from "./images/Dumpling1.png";
 import Dumpling2 from "./images/Dumpling2.png";
-import {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS} from './styledComponents';
+import {UnorderedListCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS} from './styledComponents';
 
 function Dumpling (props) {
     return (
@@ -16,7 +16,12 @@ function Dumpling (props) {
             <ProjectInfoContainer>
                 <TextContainer>
                         <ProjectTitle>Dumpling</ProjectTitle>
-                        <ProjectDescription>Dumpling is a semi-interactive mobile application prototype for a dumpster-diver community that aims to save wasted food all over Stockholm. It was designed by using methods such as <UnderLine>Value Proposition</UnderLine>, <UnderLine>User Interviews</UnderLine>, <UnderLine>Story Mapping</UnderLine>, <UnderLine>Usability Testing</UnderLine>, <UnderLine>SWOT Analysis</UnderLine> and <UnderLine>Six Thinking Hats</UnderLine>.</ProjectDescription>
+                        <ProjectDescription>Dumpling is a semi-interactive mobile application prototype for a dumpster-diver community that aims to save wasted food all over Stockholm. It was designed by using methods such as Value Proposition, User Interviews, Story Mapping, Usability Testing, SWOT Analysis and Six Thinking Hats.</ProjectDescription>
+                    <UnorderedList>
+                        <li>Thematic Analysis</li>
+                        <li>Usability Testing</li>
+                        <li>Six Thinking Hats</li>
+                    </UnorderedList>
                     <ReadMore>read more</ReadMore>
                 </TextContainer>
             </ProjectInfoContainer>
@@ -68,6 +73,10 @@ const ReadMore = styled.button`
 
 const UnderLine = styled.span`
     ${UnderLineCSS}
+`;
+
+const UnorderedList = styled.ul`
+    ${UnorderedListCSS}
 `;
 
 export default Dumpling;

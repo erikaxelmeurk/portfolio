@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import ErikProfil from "./images/ErikProfil.jpg";
 import { ArrowDown } from '@styled-icons/bootstrap/ArrowDown';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 function throttle (callbackFn, limit) {
     let wait = false;                  
@@ -43,7 +44,7 @@ function Hero (props) {
     return (
         <ContentContainer>
             <HeroContainer>
-                <TextAndButtonContainer>
+                <TextAndButtonContainer opacity={HeroButtonPos}>
                     <TextContainer>
                         <ErikHero ref = {HeroNameRef} opacity={HeroNamePos}>Erik Meurk</ErikHero>
                         <ErikTitles ref = {HeroTitlesRef} opacity={HeroTitlesPos}>UX/Front-end/VR</ErikTitles>
@@ -54,12 +55,11 @@ function Hero (props) {
                 <ReadMore>read more</ReadMore>
             </ReadMoreContainer>
             </HeroContainer>
-
-            <ImgContainer>
-                <ImgErik opacity={HeroNamePos}>
-                    <img src={ErikProfil} width="100%"></img>
-                </ImgErik> 
-            </ImgContainer>
+                <ImgContainer>
+                    <ImgErik opacity={HeroNamePos}>
+                        <img src={ErikProfil} width="100%"></img>
+                    </ImgErik> 
+                </ImgContainer>
         </ContentContainer>
     )
 }
@@ -132,6 +132,12 @@ const TextAndButtonContainer = styled.div`
     flex-direction: column;
     margin-auto;
     align-self: center;
+    border-left: solid 2px;
+    padding-left: 70px;
+    padding-top: 15x;
+    padding-bottom: 15px;
+    border-color: white;
+    opacity: ${props => props.opacity};
 `;
 
 const ErikHero = styled.h1`

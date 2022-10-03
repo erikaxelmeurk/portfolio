@@ -34,9 +34,9 @@ function About (props) {
         <ContentContainer>
             <TextContainer>
                 <AboutText ref = {AboutRef} opacity={AboutPos}>
-                    Hi! I’m a 25 year old M.Sc. student at KTH currently doing my masters in Interactive Media Technology. <br></br><br></br>
-                    I would describe myself as a spider in the web as I’m interested in most things, but <UnderLine>programming</UnderLine>, <UnderLine>UX</UnderLine> and <UnderLine>VR</UnderLine> are my biggest passions. <br></br><br></br>
-                    I’m currently looking to do a master’s thesis. Check out my portfolio below and let’s get in touch!
+                    Hi! I’m a 5th year M.Sc. student at KTH currently doing my masters in Interactive Media Technology. <br></br><br></br>
+                    I would describe myself as a spider in the web as I’m interested in most things, but <UnderLine>UX</UnderLine>, <UnderLine>front-end</UnderLine> and <UnderLine>VR</UnderLine> are my biggest passions. <br></br><br></br>
+                    I’m currently looking to do a master’s thesis in VR. Check out my portfolio below and let’s get in touch!
                 </AboutText>
             </TextContainer>
                 
@@ -103,7 +103,7 @@ const ArrowIcon = styled(ArrowDown)`
   border-color: #FFFFFF;
   border-radius: 100%;
   padding: 2px;
-  bottom: 5%;
+  bottom: 4%;
   left: 28%;
   opacity: ${props => props.opacity};
 `
