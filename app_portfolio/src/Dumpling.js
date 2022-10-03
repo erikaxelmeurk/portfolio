@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import Dumpling1 from "./images/Dumpling1.png";
 import Dumpling2 from "./images/Dumpling2.png";
-import {UnorderedListCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS} from './styledComponents';
+import {UnorderedListCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnderLineCSS} from './styledComponents';
 
 function Dumpling (props) {
     return (
@@ -68,7 +68,7 @@ const ProjectDescription = styled.h2`
 `;
 
 const ReadMore = styled.button`
-    ${ReadMoreCSS}
+    ${SecondaryButtonCSS}
 `;
 
 const UnderLine = styled.span`

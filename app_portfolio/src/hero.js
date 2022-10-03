@@ -3,6 +3,9 @@ import styled from "styled-components";
 import ErikProfil from "./images/ErikProfil.jpg";
 import { ArrowDown } from '@styled-icons/bootstrap/ArrowDown';
 import ScrollAnimation from 'react-animate-on-scroll';
+import {PrimaryButton} from './styledComponents';
+import {StateModel} from "./index.js";
+import useModelProp from "./useModelProp.js"
 
 function throttle (callbackFn, limit) {
     let wait = false;                  
@@ -28,6 +31,7 @@ function Hero (props) {
         const HeroNamePos = HeroNameRef.current.getBoundingClientRect().y / HeroNameRef.current.offsetTop;
         const HeroTitlesPos = HeroTitlesRef.current.getBoundingClientRect().y / HeroTitlesRef.current.offsetTop;
         const HeroButtonPos = HeroButtonRef.current.getBoundingClientRect().y / HeroButtonRef.current.offsetTop;
+
         setErikHeroNamePos(HeroNamePos);
         setHeroTitles(HeroTitlesPos);
         setHeroButtonPos(HeroButtonPos);
@@ -38,7 +42,7 @@ function Hero (props) {
         }, []);
 
     useEffect(() => {
-        window.addEventListener("scroll", throttle(getPosition, 5));
+        window.addEventListener("scroll", throttle(getPosition, 50));
         }, []);
         
     return (
@@ -47,7 +51,7 @@ function Hero (props) {
                 <TextAndButtonContainer opacity={HeroButtonPos}>
                     <TextContainer>
                         <ErikHero ref = {HeroNameRef} opacity={HeroNamePos}>Erik Meurk</ErikHero>
-                        <ErikTitles ref = {HeroTitlesRef} opacity={HeroTitlesPos}>UX/Front-end/VR</ErikTitles>
+                        <ErikTitles ref = {HeroTitlesRef} opacity={HeroTitlesPos}>UX/VR/Front-End</ErikTitles>
                     </TextContainer>
                     <Contact ref = {HeroButtonRef} opacity={HeroButtonPos}>contact</Contact>
                 </TextAndButtonContainer>
@@ -160,20 +164,7 @@ const ErikTitles = styled.h2`
 `;
 
 const Contact = styled.button`
-  color: white;
-  font-size: 1em;
-  font-family: Montserrat;
-  font-weight: 400;
-  padding: 10px 5px;
-  margin: 1em;
-  background-color: transparent;
-  border: 2px solid #E38800;
-  border-radius: 150px;
-  height: 50px;
-  width: 200px;
-  opacity: ${props => props.opacity};
+    ${PrimaryButton}
 `;
-
-
 
 export default Hero;

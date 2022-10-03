@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import { ArrowDown } from '@styled-icons/bootstrap/ArrowDown';
+import { StateModel } from './index.js';
 
 function About (props) {
     const AboutRef = useRef();
@@ -12,6 +13,19 @@ function About (props) {
         const BoxPos = (AboutRef.current.getBoundingClientRect().bottom - ((AboutRef.current.getBoundingClientRect().bottom - AboutRef.current.getBoundingClientRect().y))/2)
         const AboutPos1 = ((window.innerHeight) - (BoxPos)) / (0.5 * window.innerHeight);
         const AboutPos2 = BoxPos / (0.5 * window.innerHeight);
+        if (AboutRef.current.getBoundingClientRect().bottom < 0 && !StateModel.thirdSection) {
+            StateModel.setSecondSection(true);
+            StateModel.setFirstSection(false);
+        }
+
+        else if (StateModel.thirdSection){
+            StateModel.setSecondSection(false);
+            StateModel.setFirstSection(false);
+        }
+        else {
+            StateModel.setSecondSection(false);
+            StateModel.setFirstSection(true);
+        }
         if (AboutPos1 < 1) {
             setAboutPos(AboutPos1);
             setArrowOpacity(1);
@@ -27,7 +41,7 @@ function About (props) {
         }, []);
 
     useEffect(() => {
-        window.addEventListener("scroll", throttle(getPosition, 5));
+        window.addEventListener("scroll", throttle(getPosition, 50));
         }, []);
         
     return (
@@ -64,7 +78,7 @@ const TextContainer = styled.div`
 
 const AboutText = styled.h2`
     color: #FFFFFF;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-family: Montserrat; 
     font-weight: 600;
     font-size: 15px;

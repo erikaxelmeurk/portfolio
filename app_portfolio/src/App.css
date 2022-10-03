@@ -18,3 +18,7 @@ body::-webkit-scrollbar {
 }
 
 html { scroll-behavior: smooth; }
+
+a:hover {
+  color: #E38800;
+}

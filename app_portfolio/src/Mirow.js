@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import MirowImg from "./images/MirowImg.png";
 import ReactPlayer from "react-player";
-import {VideoProjectCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS, UnorderedListCSS} from './styledComponents';
+import {VideoProjectCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnderLineCSS, UnorderedListCSS} from './styledComponents';
 
 function Mirow (props) {
     return (
@@ -62,11 +62,7 @@ const ProjectDescription = styled.h2`
 `;
 
 const ReadMore = styled.button`
-    ${ReadMoreCSS}
-`;
-
-const UnderLine = styled.span`
-    ${UnderLineCSS}
+    ${SecondaryButtonCSS}
 `;
 
 const UnorderedList = styled.ul`

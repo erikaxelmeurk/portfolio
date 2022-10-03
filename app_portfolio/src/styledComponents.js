@@ -61,17 +61,16 @@ const ProjectDescriptionCSS = css`
     opacity: ${props => props.opacity};
 `;
 
-const ReadMoreCSS = css`
+const SecondaryButtonCSS = css`
   color: white;
   font-size: 1em;
   font-family: Montserrat;
   font-weight: 400;
-  padding: 10px 5px;
   background-color: transparent;
   border: 2px solid #E38800;
   border-radius: 150px;
-  height: 50px;
-  width: 200px;
+  height: 45px;
+  width: 150px;
   opacity: ${props => props.opacity};
 `;
 
@@ -103,4 +102,18 @@ const UnorderedListCSS = css`
     color: white;
     `
 
-export {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS, UnorderedListCSS, VideoProjectCSS};
+const PrimaryButton = css`
+    color: white;
+    font-size: 1em;
+    font-family: Montserrat;
+    font-weight: 400;
+    padding: 10px 5px;
+    margin: 1em;
+    background-color: #E38800;
+    background-color: solid;
+    border: 2px solid #E38800;
+    border-radius: 150px;
+    height: 45px;
+    width: 170px;
+  `;
+export {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnderLineCSS, UnorderedListCSS, VideoProjectCSS, PrimaryButton};

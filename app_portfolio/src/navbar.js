@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import instagramIcon from "./images/ig.png";
-import linkedinIcon from "./images/linkedin.png";
+import linkedinIcon from "./images/LinkedinIcon.png";
 
 function Navbar (props) {
     return (
@@ -14,10 +14,10 @@ function Navbar (props) {
             <NavbarDivRight>
                 <Socials>
                     <InstagramIconContainer>
-                        <img src = {instagramIcon}width="100%"></img>
+                        <a href="https://www.instagram.com/erikaxelmedia/" target="_blank"><img src = {instagramIcon}width="100%"></img></a>
                     </InstagramIconContainer>
                     <LinkedInIconContainer>
-                        <img src = {linkedinIcon} width="100%"></img>
+                    <a href="https://www.linkedin.com/in/erikmeurk/" target="_blank"><img src = {linkedinIcon} width="100%"></img></a>
                     </LinkedInIconContainer>
                 </Socials>
             </NavbarDivRight>

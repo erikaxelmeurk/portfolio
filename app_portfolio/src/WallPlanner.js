@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import ReactPlayer from "react-player";
 import WallPlannerImg from "./images/WallPlanner.png";
-import {VideoProjectCSS,ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS, UnorderedListCSS} from './styledComponents';
+import {VideoProjectCSS,ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnderLineCSS, UnorderedListCSS} from './styledComponents';
 
 function WallPlanner (props) {
     return (
@@ -61,7 +61,7 @@ const ProjectDescription = styled.h2`
 `;
 
 const ReadMore = styled.button`
-    ${ReadMoreCSS}
+    ${SecondaryButtonCSS}
 `;
 
 const UnderLine = styled.span`

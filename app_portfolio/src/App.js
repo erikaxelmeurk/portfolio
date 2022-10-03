@@ -11,6 +11,7 @@ import SafetyVR from './SafetyVR';
 import Dumpling from './Dumpling';
 import Mirow from './Mirow';
 import LinesRight from './LinesRight';
+import Contact from './Contact';
 
 function App() { 
   return (
@@ -26,6 +27,7 @@ function App() {
         <UniQuiz/>
         <Dumpling/>
         <Mirow/>
+        <Contact/>
       </AppContainer>
     </ParallaxProvider>
   );

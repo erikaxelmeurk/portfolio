@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styled from "styled-components";
 import UniQuizImg from "./images/UniQuiz.png";
-import {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, ReadMoreCSS, UnderLineCSS, UnorderedListCSS} from './styledComponents';
+import {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnderLineCSS, UnorderedListCSS} from './styledComponents';
 
 function UniQuiz (props) {
     return (
@@ -55,7 +55,7 @@ const ProjectDescription = styled.h2`
 `;
 
 const ReadMore = styled.button`
-    ${ReadMoreCSS}
+    ${SecondaryButtonCSS}
 `;
 
 const UnderLine = styled.span`
