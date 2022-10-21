@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from "styled-components";
 import {ProjectDescriptionCSS} from './styledComponents';
 import EmailIcon from "./images/email.png";
@@ -7,36 +7,29 @@ import InstagramIcon from "./images/ig.png";
 import GithubIcon from "./images/GithubIcon.png";
 import {PrimaryButton} from './styledComponents';
 import { StateModel } from './index.js';
-
-function throttle (callbackFn, limit) {
-    let wait = false;                  
-    return function () {              
-        if (!wait) {                  
-            callbackFn.call();           
-            wait = true;               
-            setTimeout(function () {   
-                wait = false;          
-            }, limit);
-        }
-    }
-}
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 function Contact (props) {  
     const TextAndButtonContainerRef = useRef();
     const getPosition = () => {
-        if(TextAndButtonContainerRef.current.getBoundingClientRect().top < window.innerHeight) {
-            StateModel.setThirdSection(true);
-        }
-        else {
-            StateModel.setThirdSection(false);
-        }
+        setTimeout(() => {
+            const TextAndButtonContainerRefTop = TextAndButtonContainerRef.current.getBoundingClientRect().top;
+            if(TextAndButtonContainerRefTop < window.innerHeight && TextAndButtonContainerRefTop > 0) {
+                StateModel.setForthSection(true);
+            }
+            else if (TextAndButtonContainerRefTop > window.innerHeight && TextAndButtonContainerRefTop > 0 && !StateModel.secondSection && !StateModel.firstSection && StateModel.forthSection){
+                StateModel.setForthSection(false);
+                StateModel.setThirdSection(true);
+            }
+        }, 50);
     };
     useEffect(() => {
         getPosition();
         }, []);
 
     useEffect(() => {
-        window.addEventListener("scroll", throttle(getPosition, 5));
+        window.addEventListener("scroll", getPosition);
+        return () => window.removeEventListener("scroll", getPosition);
         }, []);
         
     return (
@@ -44,38 +37,48 @@ function Contact (props) {
             <HeroContainer>
                 <TextAndButtonContainer ref = {TextAndButtonContainerRef}>
                     <TextContainer>
-                        <ErikHero>Let's connect!</ErikHero>
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><ErikHero>Let's connect!</ErikHero></AnimationOnScroll>
                     </TextContainer>
-                    <ContactBtn>contact</ContactBtn>
+                    <LinkTo href="mailto:erikaxelmeurk@gmail.com" target="_blank"><AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><ContactBtn>contact</ContactBtn></AnimationOnScroll></LinkTo>
                 </TextAndButtonContainer>
             </HeroContainer>
             <ContactSocialsContainer>
                 <ListSocialsContainer>
-                    <Email>
-                            <EmailIconImg src={EmailIcon} href="mailto:erikaxelmeurk@gmail.com" width="5%" height="5%"></EmailIconImg>
-                            <LinkTo href="mailto:erikaxelmeurk@gmail.com" target="_blank">
-                                <p>erikaxelmeurk@gmail.com</p>
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
+                        <Email>
+                                <EmailIconImg src={EmailIcon} href="mailto:erikaxelmeurk@gmail.com" width="5%" height="5%"></EmailIconImg>
+                                <LinkTo href="mailto:erikaxelmeurk@gmail.com" target="_blank">
+                                    <p>erikaxelmeurk@gmail.com</p>
+                                </LinkTo>
+                        </Email>
+                    </AnimationOnScroll>
+
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
+                        <LinkedIn>
+                            <LinkedInIcon src={LinkedinIcon} width="5%" height="5%"></LinkedInIcon>
+                            <LinkTo href ="https://www.linkedin.com/in/erikmeurk/" target="_blank">
+                                <p>/erikmeurk</p>
                             </LinkTo>
-                    </Email>
-                    
-                    <LinkedIn>
-                        <LinkedInIcon src={LinkedinIcon} width="5%" height="5%"></LinkedInIcon>
-                        <LinkTo href ="https://www.linkedin.com/in/erikmeurk/" target="_blank">
-                            <p>/erikmeurk</p>
-                        </LinkTo>
-                    </LinkedIn>
-                    <Instagram>
-                        <InstagramIconImg src={InstagramIcon} width="5%" height="5%"></InstagramIconImg>
-                        <LinkTo href="https://www.instagram.com/erikaxelmedia/" target="_blank">
-                            <p>/erikaxelmedia</p>
-                        </LinkTo>
-                    </Instagram>
-                    <Github>
-                        <GithubImg src={GithubIcon} width="5%" height="5%"></GithubImg>
-                        <LinkTo href="https://github.com/erikaxelmeurk" target="_blank">
-                            <p>/erikaxelmeurk</p>
-                        </LinkTo>
-                    </Github>
+                        </LinkedIn>
+                    </AnimationOnScroll>
+
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
+                        <Instagram>
+                            <InstagramIconImg src={InstagramIcon} width="5%" height="5%"></InstagramIconImg>
+                            <LinkTo href="https://www.instagram.com/erikaxelmedia/" target="_blank">
+                                <p>/erikaxelmedia</p>
+                            </LinkTo>
+                        </Instagram>
+                    </AnimationOnScroll>
+
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
+                        <Github>
+                            <GithubImg src={GithubIcon} width="5%" height="5%"></GithubImg>
+                            <LinkTo href="https://github.com/erikaxelmeurk" target="_blank">
+                                <p>/erikaxelmeurk</p>
+                            </LinkTo>
+                        </Github>
+                    </AnimationOnScroll>
                 </ListSocialsContainer>
             </ContactSocialsContainer>
         </ContentContainer>
@@ -115,7 +118,6 @@ const LinkTo = styled.a`
     display: flex;
     text-decoration: none;
     color: #FFFFFF;
-    target="_blank"
 `;
 
 const EmailIconImg = styled.img`
@@ -182,7 +184,6 @@ const TextContainer = styled.div`
 const TextAndButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin-auto;
     align-self: center;
     border-left: solid 2px;
     padding-left: 70px;

@@ -1,43 +1,41 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
 
 const ContentContainerCSS = css`
     display: flex;
     flex-direction: row;
-    height: 400px;
     margin: 9%;
+    margin-bottom: 300px;
 `;
 
 const ImgContainerCSS = css`
     width: 100%;
     opacity: ${props => props.opacity};
-    align-self: center;
 `;
 
 const ImgProjectCSS = css`
     align-self: center;
     width: 80%;
-    height: 100%;
-    object-fit: cover;
+    margin-bottom: 20px;
 `
 
 const VideoProjectCSS = css`
     align-self: center;
-    width: 80%;
+    width: 100%;
     height: 100%;
 `
 
 const ProjectInfoContainerCSS = css`
     width: 100%;
     display: flex;
-    align-self: center;
+    align-self: auto;
     flex-direction: column;
 `;
 
 const TextContainerCSS = css`
     display: flex;
     flex-direction: column;
-    align-self: center;
+    margin-top: 20px;
 `;
 
 const ProjectTitleCSS = css`
@@ -58,7 +56,6 @@ const ProjectDescriptionCSS = css`
     font-weight: 400;
     font-size: 0.9em;
     color: white;
-    opacity: ${props => props.opacity};
 `;
 
 const SecondaryButtonCSS = css`
@@ -71,7 +68,21 @@ const SecondaryButtonCSS = css`
   border-radius: 150px;
   height: 45px;
   width: 150px;
+  cursor: pointer;
+  
   opacity: ${props => props.opacity};
+
+  &:hover {
+    background-color: solid;
+    background-color: #E38800;
+    transition: background-color 400ms ease-out 100ms
+  }
+  &:active {
+    transform: translateY(2px);
+    opacity: 95%;
+    font-size: 0.9em;
+    transition: font-size 100ms ease-out;
+  }
 `;
 
 const UnderLineCSS = css`
@@ -115,5 +126,25 @@ const PrimaryButton = css`
     border-radius: 150px;
     height: 45px;
     width: 170px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: transparent;
+        transition: background-color 400ms ease-out 100ms
+      }
+      &:active {
+        transform: translateY(2px);
+        opacity: 95%;
+        transition: font-size 100ms ease-out;
+      }
   `;
-export {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnderLineCSS, UnorderedListCSS, VideoProjectCSS, PrimaryButton};
+
+  const LinkToCSS = css`
+    display: flex;
+    text-decoration: none;
+    color: #FFFFFF;
+    display:inline;
+`;
+
+  
+export {ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnderLineCSS, UnorderedListCSS, VideoProjectCSS, PrimaryButton, LinkToCSS};

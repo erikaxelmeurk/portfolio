@@ -3,6 +3,7 @@ class ModelStates {
         this.firstSection = false;
         this.secondSection = false;
         this.thirdSection = false;
+        this.forthSection = false;
         this.subscribers = [];
     }
 
@@ -19,11 +20,15 @@ class ModelStates {
     setSecondSection(bool) {
         this.secondSection = bool;
         this.notifyObservers();
-        console.log("NU ÄNDRADES DEN I MODELLEN")
     }
 
     setThirdSection(bool) {
         this.thirdSection = bool;
+        this.notifyObservers();
+    }
+
+    setForthSection(bool) {
+        this.forthSection = bool;
         this.notifyObservers();
     }
 

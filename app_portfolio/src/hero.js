@@ -1,24 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import ErikProfil from "./images/ErikProfil.jpg";
-import { ArrowDown } from '@styled-icons/bootstrap/ArrowDown';
-import ScrollAnimation from 'react-animate-on-scroll';
 import {PrimaryButton} from './styledComponents';
-import {StateModel} from "./index.js";
-import useModelProp from "./useModelProp.js"
+import { fadeIn, rotateInUpLeft, fadeInLeftBig } from 'react-animations';
+import { rotateInDownLeft } from 'react-animations';
 
-function throttle (callbackFn, limit) {
-    let wait = false;                  
-    return function () {              
-        if (!wait) {                  
-            callbackFn.call();           
-            wait = true;               
-            setTimeout(function () {   
-                wait = false;          
-            }, limit);
-        }
-    }
-}
+const fadeInAnimation = keyframes`${fadeIn}`;
+const fadeInLeftBigAnimation = keyframes`${fadeInLeftBig}`;
+
 
 function Hero (props) {
     const HeroNameRef = useRef();
@@ -27,22 +16,42 @@ function Hero (props) {
     const [HeroNamePos, setErikHeroNamePos] = useState();
     const [HeroTitlesPos, setHeroTitles] = useState();
     const [HeroButtonPos, setHeroButtonPos] = useState();
-    const getPosition = () => {
-        const HeroNamePos = HeroNameRef.current.getBoundingClientRect().y / HeroNameRef.current.offsetTop;
-        const HeroTitlesPos = HeroTitlesRef.current.getBoundingClientRect().y / HeroTitlesRef.current.offsetTop;
-        const HeroButtonPos = HeroButtonRef.current.getBoundingClientRect().y / HeroButtonRef.current.offsetTop;
 
-        setErikHeroNamePos(HeroNamePos);
-        setHeroTitles(HeroTitlesPos);
-        setHeroButtonPos(HeroButtonPos);
+    const getPosition = event => {
+        console.log("inne i getPost"); 
+        setTimeout(() => {
+            const HeroNamePos = HeroNameRef.current.getBoundingClientRect().y / HeroNameRef.current.offsetTop;
+            const HeroTitlesPos = HeroTitlesRef.current.getBoundingClientRect().y / HeroTitlesRef.current.offsetTop;
+            const HeroButtonPos = HeroButtonRef.current.getBoundingClientRect().y / HeroButtonRef.current.offsetTop;
+    
+            setErikHeroNamePos(HeroNamePos);
+            setHeroTitles(HeroTitlesPos);
+            setHeroButtonPos(HeroButtonPos);
+        }, 50);
 
     };
+
+    const throttle = () => {
+        let wait = false;
+        console.log("inne i throttle");  
+        return function () {              
+            if (!wait) {                  
+                getPosition()         
+                wait = true;               
+                setTimeout(function () {   
+                    wait = false;          
+                }, 50);
+            }
+        }
+    }
     useEffect(() => {
         getPosition();
         }, []);
 
     useEffect(() => {
-        window.addEventListener("scroll", throttle(getPosition, 50));
+        console.log("inne i useffect"); 
+        window.addEventListener("scroll", getPosition);
+        return () => window.removeEventListener("scroll", getPosition);
         }, []);
         
     return (
@@ -53,7 +62,7 @@ function Hero (props) {
                         <ErikHero ref = {HeroNameRef} opacity={HeroNamePos}>Erik Meurk</ErikHero>
                         <ErikTitles ref = {HeroTitlesRef} opacity={HeroTitlesPos}>UX/VR/Front-End</ErikTitles>
                     </TextContainer>
-                    <Contact ref = {HeroButtonRef} opacity={HeroButtonPos}>contact</Contact>
+                    <LinkTo href="mailto:erikaxelmeurk@gmail.com" target="_blank"><Contact ref = {HeroButtonRef} opacity={HeroButtonPos}>contact</Contact></LinkTo>
                 </TextAndButtonContainer>
             <ReadMoreContainer opacity={HeroNamePos}>
                 <ReadMore>read more</ReadMore>
@@ -61,7 +70,7 @@ function Hero (props) {
             </HeroContainer>
                 <ImgContainer>
                     <ImgErik opacity={HeroNamePos}>
-                        <img src={ErikProfil} width="100%"></img>
+                        <img src={ErikProfil} alt="Erik Profilbild"width="100%"></img>
                     </ImgErik> 
                 </ImgContainer>
         </ContentContainer>
@@ -81,6 +90,7 @@ const ImgContainer = styled.div`
 `;
 
 const ImgErik = styled.div`
+    animation: 2s ${fadeInAnimation};
     align-self: center;
     width: 70%;
     margin-top: 100px;
@@ -112,29 +122,15 @@ const ReadMore = styled.p`
     color: white;
 `
 
-const ArrowIcon = styled(ArrowDown)`
-  color: #E38800;
-  width: 30px;
-  height: 30px;
-  position: fixed;
-  border: solid;
-  border-color: #FFFFFF;
-  border-radius: 100%;
-  padding: 2px;
-  bottom: 5%;
-  left: 28%;
-  opacity: ${props => props.opacity};
-`
-
 const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;
 
 const TextAndButtonContainer = styled.div`
+    animation: 1s ${fadeInAnimation};
     display: flex;
     flex-direction: column;
-    margin-auto;
     align-self: center;
     border-left: solid 2px;
     padding-left: 70px;
@@ -145,26 +141,34 @@ const TextAndButtonContainer = styled.div`
 `;
 
 const ErikHero = styled.h1`
+    animation: 1.5s ${fadeInLeftBigAnimation};
     letter-spacing: 7px;    
     font-family: Lato;      
     font-weight: 500;
     font-size: 50px;
-    color: white;
+    color: ${props => props.theme.colors.white};
     opacity: ${props => props.opacity};
 `;
 
 const ErikTitles = styled.h2`
-    color: #FFFFFF;
+    animation: 1.8s ${fadeInLeftBigAnimation};
     letter-spacing: 5px;
     font-family: Montserrat; 
     font-weight: 400;
     font-size: 15px;
-    color: white;
+    color: ${props => props.theme.colors.white};
     opacity: ${props => props.opacity};
 `;
 
 const Contact = styled.button`
+    animation: 2s ${fadeInLeftBigAnimation};
     ${PrimaryButton}
+`;
+
+const LinkTo = styled.a`
+    display: flex;
+    text-decoration: none;
+    color: #FFFFFF;
 `;
 
 export default Hero;

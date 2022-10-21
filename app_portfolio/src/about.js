@@ -8,40 +8,70 @@ function About (props) {
     const [AboutPos, setAboutPos] = useState();
     const [ArrowOpacity, setArrowOpacity] = useState();
 
-    
     const getPosition = () => {
-        const BoxPos = (AboutRef.current.getBoundingClientRect().bottom - ((AboutRef.current.getBoundingClientRect().bottom - AboutRef.current.getBoundingClientRect().y))/2)
-        const AboutPos1 = ((window.innerHeight) - (BoxPos)) / (0.5 * window.innerHeight);
-        const AboutPos2 = BoxPos / (0.5 * window.innerHeight);
-        if (AboutRef.current.getBoundingClientRect().bottom < 0 && !StateModel.thirdSection) {
-            StateModel.setSecondSection(true);
-            StateModel.setFirstSection(false);
-        }
+        setTimeout(() => {
+            const BoxPos = (AboutRef.current.getBoundingClientRect().bottom - ((AboutRef.current.getBoundingClientRect().bottom - AboutRef.current.getBoundingClientRect().y))/2);
+            const windowHeight = window.innerHeight;
+            const AboutPos1 = ((windowHeight) - (BoxPos)) / (0.5 * windowHeight);
+            const AboutPos2 = BoxPos / (0.5 * windowHeight);
 
-        else if (StateModel.thirdSection){
-            StateModel.setSecondSection(false);
-            StateModel.setFirstSection(false);
-        }
-        else {
-            StateModel.setSecondSection(false);
-            StateModel.setFirstSection(true);
-        }
-        if (AboutPos1 < 1) {
-            setAboutPos(AboutPos1);
-            setArrowOpacity(1);
-        }
-        else {
-            setAboutPos(AboutPos2);
-            setArrowOpacity(AboutPos2);
-        }
+            if (BoxPos < windowHeight && BoxPos > 0) {
+                StateModel.setSecondSection(true);
+                StateModel.setFirstSection(false);
+                StateModel.setThirdSection(false);
+            }
 
+            else if (BoxPos > windowHeight && BoxPos > 0 && !StateModel.secondSection) {
+                StateModel.setSecondSection(false);
+                StateModel.setFirstSection(true);
+            }
+
+            else if (BoxPos > windowHeight && BoxPos > 0 && StateModel.secondSection) {
+                StateModel.setSecondSection(false);
+                StateModel.setFirstSection(true);
+            }
+
+            else if (BoxPos < 0 && StateModel.secondSection) {
+                StateModel.setThirdSection(true);
+                StateModel.setSecondSection(false);
+            }
+
+            else if (BoxPos < 0 && StateModel.forthSection) {
+                StateModel.setThirdSection(false);
+            }
+
+            if (AboutPos1 < 1) {
+                setAboutPos(AboutPos1);
+                setArrowOpacity(1);
+            }
+            else {
+                setAboutPos(AboutPos2);
+                setArrowOpacity(AboutPos2);
+            }
+
+            }, 50);
+        
     };
+
+    const throttle = () => {
+        let wait = false;                  
+        return function () {              
+            if (!wait) {                  
+                getPosition()         
+                wait = true;               
+                setTimeout(function () {   
+                    wait = false;          
+                }, 50);
+            }
+        }
+    }
     useEffect(() => {
         getPosition();
         }, []);
 
     useEffect(() => {
-        window.addEventListener("scroll", throttle(getPosition, 50));
+        window.addEventListener("scroll", getPosition);
+        return () => window.removeEventListener("scroll", getPosition);
         }, []);
         
     return (

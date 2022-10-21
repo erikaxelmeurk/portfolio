@@ -1,16 +1,21 @@
 body {
     margin: 0 !important;
     padding: 0;
-    height: 2000px;
     /*-ms-overflow-style: none; /* for Internet Explorer, Edge */
     /*scrollbar-width: none; /* for Firefox */
    /* overflow-y: scroll; */
    scroll-behavior: smooth;
    scroll-snap-stop: always;
+   min-height: 6000px;
   }
   *, html {
     margin:0;
     padding:0;  
+}
+
+*, html {
+
+  scroll-behavior: smooth !important;
 }
 
 body::-webkit-scrollbar {
@@ -21,4 +26,11 @@ html { scroll-behavior: smooth; }
 
 a:hover {
   color: #E38800;
+}
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
 }

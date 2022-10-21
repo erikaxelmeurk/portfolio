@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React from 'react';
 import Navbar from './navbar';
 import Hero from './hero';
 import {About} from './about';
@@ -11,25 +11,48 @@ import SafetyVR from './SafetyVR';
 import Dumpling from './Dumpling';
 import Mirow from './Mirow';
 import LinesRight from './LinesRight';
+import Photography from './photography';
 import Contact from './Contact';
+import Theme from "./Theme";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() { 
   return (
-    <ParallaxProvider>
-      <AppContainer>
+    <Theme>
+      <ParallaxProvider>
         <GlobalStyle />
-        <Navbar/>
-        <LinesRight/>
-        <Hero/>
-        <About/>
-        <SafetyVR/>
-        <WallPlanner/>
-        <UniQuiz/>
-        <Dumpling/>
-        <Mirow/>
-        <Contact/>
-      </AppContainer>
-    </ParallaxProvider>
+          <Router>
+            <AppContainer>
+            <Navbar/>
+              <Routes>
+                  <Route path="/" element={
+                    <div>
+                      <LinesRight/>
+                      <Hero/>
+                      <About/>
+                      <SafetyVR/>
+                      <WallPlanner/>
+                      <UniQuiz/>
+                      <Dumpling/>
+                      <Mirow/>
+                      <Contact/>
+                    </div>}>
+                  </Route>
+                  <Route path="/photography" element={
+                    <div>
+                      <Photography></Photography>
+                    </div>}>
+                  </Route>
+              </Routes>
+            </AppContainer>
+          </Router>
+      </ParallaxProvider>
+    </Theme>
   );
 }
 
