@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import ReactPlayer from "react-player";
 import MirowImg from "./images/MirowImg.png";
 import {LinkToCSS, ImgProjectCSS, VideoProjectCSS, ImgContainerCSS, ContentContainerCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';

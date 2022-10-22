@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro"
 import instagramIcon from "./images/ig.png";
 import linkedinIcon from "./images/LinkedinIcon.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar (props) {
     const [underlinePortfolio, setUnderlinePortfolio] = useState(false);
     const [underlinePhotography, setUnderlinePhotography] = useState(false);
-    const {refresh, setRefresh} = useState(false)
+    const location = useLocation();
+
     useEffect(() => {
         if (window.location.href == "http://localhost:3000/") {
             console.log("kom in i portfölj ")
@@ -18,7 +19,14 @@ function Navbar (props) {
             console.log("kom in i photo ")
             setUnderlinePhotography(true);
         }
-    }, []);
+
+    });
+
+    
+    useEffect(() => {
+        //to refresh site so underline changes
+    }, [location]);
+
     return (
         <NavbarLinkContainer>
             <NavbarDivLeft></NavbarDivLeft>
@@ -48,8 +56,10 @@ const NavLink = styled(Link)`
     margin-right: 5%; 
     margin-left: 5%;
     letter-spacing: 2px;
-    text-decoration-color: #ECECEC;
     text-decoration: ${props => props.underline ? "underline": ""}!important;
+    text-decoration-color: #E38800!important;
+    text-decoration-thickness: 2px!important;
+    text-underline-offset: 5px!important;
     a:link {
     }
 `;

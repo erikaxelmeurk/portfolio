@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import {ProjectDescriptionCSS} from './styledComponents';
 import EmailIcon from "./images/email.png";
 import LinkedinIcon from "./images/LinkedinIcon.png";

@@ -1,9 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components/macro";
 import ErikProfil from "./images/ErikProfil.jpg";
 import {PrimaryButton} from './styledComponents';
-import { fadeIn, rotateInUpLeft, fadeInLeftBig } from 'react-animations';
-import { rotateInDownLeft } from 'react-animations';
+import { fadeIn, fadeInLeftBig } from 'react-animations';
 
 const fadeInAnimation = keyframes`${fadeIn}`;
 const fadeInLeftBigAnimation = keyframes`${fadeInLeftBig}`;
@@ -31,19 +30,6 @@ function Hero (props) {
 
     };
 
-    const throttle = () => {
-        let wait = false;
-        console.log("inne i throttle");  
-        return function () {              
-            if (!wait) {                  
-                getPosition()         
-                wait = true;               
-                setTimeout(function () {   
-                    wait = false;          
-                }, 50);
-            }
-        }
-    }
     useEffect(() => {
         getPosition();
         }, []);

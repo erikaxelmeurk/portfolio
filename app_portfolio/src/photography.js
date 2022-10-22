@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled from "styled-components/macro";
 import { InstagramEmbed } from 'react-social-media-embed';
 import {loadingGIF} from './images/loading.gif';
 

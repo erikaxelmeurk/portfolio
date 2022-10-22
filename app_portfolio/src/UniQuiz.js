@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import UniQuizImg from "./images/UniQuiz.png";
 import UniQuizImg1 from "./images/UniQuiz1.png";
 import {LinkToCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';

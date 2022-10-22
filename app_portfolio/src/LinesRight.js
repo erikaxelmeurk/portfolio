@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {keyframes} from "styled-components";
+import styled, {keyframes} from "styled-components/macro";
 import useModelProp from "./useModelProp.js";
 import {StateModel} from "./index.js";
 import { fadeInRightBig } from 'react-animations';

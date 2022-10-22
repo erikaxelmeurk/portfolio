@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { ArrowDown } from '@styled-icons/bootstrap/ArrowDown';
 import { StateModel } from './index.js';
 
@@ -53,18 +53,6 @@ function About (props) {
         
     };
 
-    const throttle = () => {
-        let wait = false;                  
-        return function () {              
-            if (!wait) {                  
-                getPosition()         
-                wait = true;               
-                setTimeout(function () {   
-                    wait = false;          
-                }, 50);
-            }
-        }
-    }
     useEffect(() => {
         getPosition();
         }, []);
@@ -151,18 +139,5 @@ const ArrowIcon = styled(ArrowDown)`
   left: 28%;
   opacity: ${props => props.opacity};
 `
-
-function throttle (callbackFn, limit) {
-    let wait = false;                  
-    return function () {              
-        if (!wait) {                  
-            callbackFn.call();           
-            wait = true;               
-            setTimeout(function () {   
-                wait = false;          
-            }, limit);
-        }
-    }
-}
 
 export {About};

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import ReactPlayer from "react-player";
 import WallPlannerImg from "./images/WallPlannerImg.png";
 import {ImgProjectCSS, LinkToCSS, VideoProjectCSS,ImgContainerCSS, ContentContainerCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';

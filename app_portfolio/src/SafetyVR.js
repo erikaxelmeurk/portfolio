@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import styled, {keyframes} from "styled-components";
+import styled, {keyframes} from "styled-components/macro";
 import SafetyVRImg from "./images/SafetyVRImg.png";
 import SafetyVRImg2 from "./images/SafetyVRImg2.png";
 import {LinkToCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Dumpling1 from "./images/Dumpling1.png";
 import Dumpling2 from "./images/Dumpling2.png";
 import {ContentContainerCSS, LinkToCSS, ImgProjectCSS, ImgContainerCSS, UnorderedListCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS} from './styledComponents';

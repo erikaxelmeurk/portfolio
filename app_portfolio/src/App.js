@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './navbar';
 import Hero from './hero';
 import {About} from './about';
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components/macro";
 import './App.css';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import UniQuiz from './UniQuiz';
@@ -17,8 +17,7 @@ import Theme from "./Theme";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() { 
