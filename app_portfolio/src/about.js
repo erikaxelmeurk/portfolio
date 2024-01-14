@@ -49,7 +49,7 @@ function About (props) {
                 setArrowOpacity(AboutPos2);
             }
 
-            }, 50);
+            }, 100);
         
     };
 
@@ -67,15 +67,10 @@ function About (props) {
             <TextContainer>
                 <AboutText ref = {AboutRef} opacity={AboutPos}>
                     Hi! I’m a 5th year M.Sc. student at KTH currently doing my masters in Interactive Media Technology. <br></br><br></br>
-                    I would describe myself as a spider in the web as I’m interested in most things, but <UnderLine>UX</UnderLine>, <UnderLine>front-end</UnderLine> and <UnderLine>VR</UnderLine> are my biggest passions. <br></br><br></br>
-                    I’m currently looking to do a master’s thesis in VR. Check out my portfolio below and let’s get in touch!
+                    I would describe myself as a spider in the web as I’m interested in most things, but <UnderLine>XR</UnderLine>, <UnderLine>UX</UnderLine> and <UnderLine>Front-end</UnderLine> are my biggest passions. <br></br><br></br>
+                    I’m currently doing my master's thesis at Resolution Games about three-dimensional locomotion. Have a look at my portfolio below and let’s get in touch!
                 </AboutText>
             </TextContainer>
-                
-            <ReadMoreContainer opacity={AboutPos}>
-                <ReadMore>view projects</ReadMore>
-            </ReadMoreContainer>    
-            <ArrowIcon opacity ={ArrowOpacity}></ArrowIcon>
         </ContentContainer>
     )
 }
@@ -84,6 +79,10 @@ const ContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     margin: 10%;
+    @media (max-width: 926px) {
+        margin-top: 150px;
+        width: 100%;
+    }   
 `;
 
 
@@ -92,6 +91,10 @@ const TextContainer = styled.div`
     display: flex;
     margin: auto;
     align-self: center;
+    @media (max-width: 926px) {
+        width: 350px;
+        margin: 0;
+    }   
 `;
 
 const AboutText = styled.h2`
@@ -116,6 +119,9 @@ const ReadMoreContainer = styled.div`
     align-self: center;
     left: 18%;
     opacity: ${props => props.opacity};
+    @media (max-width: 1050px) {
+        display: none;
+  }    
 `
 const ReadMore = styled.p`
     align-self: flex-end;
@@ -128,16 +134,19 @@ const ReadMore = styled.p`
 
 const ArrowIcon = styled(ArrowDown)`
   color: #E38800;
-  width: 30px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
   position: fixed;
   border: solid;
   border-color: #FFFFFF;
   border-radius: 100%;
   padding: 2px;
-  bottom: 4%;
-  left: 28%;
+  bottom: 5%;
+  left: 29%;
   opacity: ${props => props.opacity};
+  @media (max-width: 865px) {
+        display:none;
+    }   
 `
 
 export {About};

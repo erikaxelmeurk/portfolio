@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from "styled-components/macro";
 import Dumpling1 from "./images/Dumpling1.png";
 import Dumpling2 from "./images/Dumpling2.png";
-import {ContentContainerCSS, LinkToCSS, ImgProjectCSS, ImgContainerCSS, UnorderedListCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS} from './styledComponents';
+import {UnderLineCSS, ContentContainerCSS, LinkToCSS, ImgProjectCSS, ImgContainerCSS, UnorderedListCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS} from './styledComponents';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 function Dumpling (props) {
     const [isShown, setIsShown] = useState(false);
@@ -13,9 +13,9 @@ function Dumpling (props) {
     return (
         <ContentContainer>
             <ImgContainer>
-                <ImgProject src={Dumpling1}>
+                <ImgProject src={Dumpling1} showImg={true}>
                 </ImgProject> 
-                {isShown && <ImgProject src={Dumpling2}></ImgProject>}
+                {isShown && <ImgProject src={Dumpling2} showImg={false}></ImgProject>}
             </ImgContainer>
             <ProjectInfoContainer>
                 <TextContainer>
@@ -43,7 +43,7 @@ function Dumpling (props) {
                         In our final design, based on our users needs we identified earlier in the process, a map was created that showed different locations
                         of dumpsters. In these Dumpsters, users could in real time see what was inside, based on other users input that was already there.<br></br><br></br>
 
-                        You can find our project report <LinkTo href="./pdf/Dumpling.pdf" download="Dumpling.pdf" target="_blank">here</LinkTo></ProjectDescriptionReadMore>}
+                        You can find our project report <LinkTo href="./pdf/Dumpling.pdf" download="Dumpling.pdf" target="_blank"><UnderLine>here</UnderLine></LinkTo></ProjectDescriptionReadMore>}
                     <AnimationOnScroll animateIn="fadeInUp" animateOnce="true">
                         <div>
                         <AnimationOnScroll animateIn="animate__headShake" initiallyVisible="false" animateOnce="false" duration="1.5" delay="700">
@@ -60,15 +60,27 @@ function Dumpling (props) {
 
 const ContentContainer = styled.div`
     ${ContentContainerCSS}
+    @media (max-width: 926px) {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }     
 `;
 
 const ImgContainer = styled.div`
     ${ImgContainerCSS};
+    @media (max-width: 926px) {
+        margin-top: 35px;
+    }   
 `;
 
 const ImgProject = styled.img`
     ${ImgProjectCSS}
     width: 100%;
+    @media (max-width: 926px) {
+        width: 100%;
+        display: ${props => props.showImg ? "static;": "none;"}; 
+    } 
 `
 
 const ProjectInfoContainer = styled.div`
@@ -89,6 +101,10 @@ const ProjectDescription = styled.h2`
 
 const ReadMore = styled.button`
     ${SecondaryButtonCSS}
+`;
+
+const UnderLine = styled.span`
+    ${UnderLineCSS};
 `;
 
 const UnorderedList = styled.ul`

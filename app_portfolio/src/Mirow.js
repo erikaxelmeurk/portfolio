@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from "styled-components/macro";
 import ReactPlayer from "react-player";
 import MirowImg from "./images/MirowImg.png";
-import {LinkToCSS, ImgProjectCSS, VideoProjectCSS, ImgContainerCSS, ContentContainerCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';
+import {UnderLineCSS, LinkToCSS, ImgProjectCSS, VideoProjectCSS, ImgContainerCSS, ContentContainerCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 function Mirow (props) {
     const [isShown, setIsShown] = useState(false);
@@ -15,8 +15,8 @@ function Mirow (props) {
         <ContentContainer>
             <ImgContainer>
                 <VideoContainer>
-                    <ReactPlayer url="https://vimeo.com/755109458" width='80%'></ReactPlayer>
-                    {isShown && <ImgProject src={MirowImg}></ImgProject>}
+                    <ReactPlayer url="https://vimeo.com/755109458" width='80%' controls></ReactPlayer>
+                    {isShown && <ImgProject src={MirowImg} showImg={false}></ImgProject>}
                 </VideoContainer>
             </ImgContainer>
             <ProjectInfoContainer>
@@ -46,7 +46,7 @@ function Mirow (props) {
                     <br></br><br></br>
 
                     The final deliverable was a video showcasing our design proposal and how it could look like if it was real.
-                    You can follow our workbook <LinkTo href="./pdf/Mirow.pdf" download="Mirow.pdf" target="_blank">here</LinkTo></ProjectDescriptionReadMore>}
+                    You can follow our workbook <LinkTo href="./pdf/Mirow.pdf" download="Mirow.pdf" target="_blank"><UnderLine>here</UnderLine></LinkTo></ProjectDescriptionReadMore>}
                     <AnimationOnScroll animateIn="fadeInUp" animateOnce="true">
                         <div>
                         <AnimationOnScroll animateIn="animate__headShake" initiallyVisible="false" animateOnce="false" duration="1.5" delay="700">
@@ -63,25 +63,50 @@ function Mirow (props) {
 
 const ContentContainer = styled.div`
     ${ContentContainerCSS}
+    margin-bottom: 0;
+    @media (max-width: 926px) {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }   
 `;
 
 const ImgContainer = styled.div`
     ${ImgContainerCSS}
+    @media (max-width: 926px) {
+        width: 400px;
+        height: 320px;
+    }  
+`;
+
+const UnderLine = styled.span`
+    ${UnderLineCSS};
 `;
 
 const ImgProject = styled.img`
     ${ImgProjectCSS}
+    @media (max-width: 926px) {
+        width: 100%;
+        display: ${props => props.showImg ? "static;": "none;"};
+    } 
 `
 const VideoContainer = styled.div`
     ${VideoProjectCSS}
+    @media (max-width: 926px) {
+        width: 100%;
+    }   
 `;
 
 const ProjectInfoContainer = styled.div`
     ${ProjectInfoContainerCSS}
+    @media (max-width: 926px) {
+        order: 1;
+    } 
 `;
 
 const TextContainer = styled.div`
     ${TextContainerCSS}
+    margin-top: 40px;
 `;
 
 const ProjectTitle = styled.h1`

@@ -17,7 +17,6 @@ function Hero (props) {
     const [HeroButtonPos, setHeroButtonPos] = useState();
 
     const getPosition = event => {
-        console.log("inne i getPost"); 
         setTimeout(() => {
             const HeroNamePos = HeroNameRef.current.getBoundingClientRect().y / HeroNameRef.current.offsetTop;
             const HeroTitlesPos = HeroTitlesRef.current.getBoundingClientRect().y / HeroTitlesRef.current.offsetTop;
@@ -26,7 +25,7 @@ function Hero (props) {
             setErikHeroNamePos(HeroNamePos);
             setHeroTitles(HeroTitlesPos);
             setHeroButtonPos(HeroButtonPos);
-        }, 50);
+        }, 100);
 
     };
 
@@ -35,52 +34,74 @@ function Hero (props) {
         }, []);
 
     useEffect(() => {
-        console.log("inne i useffect"); 
         window.addEventListener("scroll", getPosition);
         return () => window.removeEventListener("scroll", getPosition);
         }, []);
         
     return (
         <ContentContainer>
+            <ResponsiveContainer>
             <HeroContainer>
                 <TextAndButtonContainer opacity={HeroButtonPos}>
                     <TextContainer>
                         <ErikHero ref = {HeroNameRef} opacity={HeroNamePos}>Erik Meurk</ErikHero>
-                        <ErikTitles ref = {HeroTitlesRef} opacity={HeroTitlesPos}>UX/VR/Front-End</ErikTitles>
+                        <ErikTitles ref = {HeroTitlesRef} opacity={HeroTitlesPos}>XR/UX/Front-End</ErikTitles>
                     </TextContainer>
                     <LinkTo href="mailto:erikaxelmeurk@gmail.com" target="_blank"><Contact ref = {HeroButtonRef} opacity={HeroButtonPos}>contact</Contact></LinkTo>
                 </TextAndButtonContainer>
-            <ReadMoreContainer opacity={HeroNamePos}>
-                <ReadMore>read more</ReadMore>
-            </ReadMoreContainer>
             </HeroContainer>
                 <ImgContainer>
                     <ImgErik opacity={HeroNamePos}>
                         <img src={ErikProfil} alt="Erik Profilbild"width="100%"></img>
                     </ImgErik> 
                 </ImgContainer>
+            </ResponsiveContainer>
         </ContentContainer>
     )
 }
 
+const ResponsiveContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    @media (max-width: 1050px) {
+        flex-direction: column;
+        margin: 50px;
+    }   
+`;
+
 const ContentContainer = styled.div`
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: 100vh;   
+    @media (max-width: 1050px) {
+        flex-direction: column;
+        height: 100%;
+    }   
 `;
 
 const ImgContainer = styled.div`
     width: 40%;
     flex-direction: column;
     opacity: ${props => props.opacity};
+    @media (max-width: 1050px) {
+        width: 40%;
+        align-self: center;
+        margin-top: 150px;
+    }   
 `;
 
 const ImgErik = styled.div`
     animation: 2s ${fadeInAnimation};
     align-self: center;
     width: 70%;
-    margin-top: 100px;
+    min-width: 200px;
+    margin-top: 20%;
     opacity: ${props => props.opacity};
+    @media (max-width: 1050px) {
+        margin: auto;
+        opacity: 1;
+        width: 100%;
+    }   
 `
 
 const HeroContainer = styled.div`
@@ -88,6 +109,10 @@ const HeroContainer = styled.div`
     display: flex;
     align-self: center;
     flex-direction: column;
+    @media (max-width: 1050px) {
+        margin-top: 200px;
+        width: 100%;
+    }   
 `;
 
 
@@ -98,6 +123,9 @@ const ReadMoreContainer = styled.div`
     align-self: center;
     left: 20%;
     opacity: ${props => props.opacity};
+    @media (max-width: 1050px) {
+        display: none;
+  }    
 `
 const ReadMore = styled.p`
     align-self: flex-end;
@@ -106,6 +134,9 @@ const ReadMore = styled.p`
     font-weight: 500;
     font-size: 15px;
     color: white;
+    @media (max-width: 1050px) {
+        display: none;
+  }    
 `
 
 const TextContainer = styled.div`

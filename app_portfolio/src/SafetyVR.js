@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react';
 import styled, {keyframes} from "styled-components/macro";
 import SafetyVRImg from "./images/SafetyVRImg.png";
 import SafetyVRImg2 from "./images/SafetyVRImg2.png";
-import {LinkToCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';
+import {UnderLineCSS, LinkToCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';
 import { fadeIn } from 'react-animations';
 import "animate.css/animate.min.css";
 import { AnimationOnScroll } from 'react-animation-on-scroll';
@@ -19,9 +19,9 @@ function SafetyVR (props) {
     return (
         <ContentContainer>
             <ImgContainer>
-                <ImgProject src={SafetyVRImg}>
+                <ImgProject src={SafetyVRImg} showImg={true}>
                 </ImgProject>
-                {isShown && <ImgProject src={SafetyVRImg2}></ImgProject>}
+                {isShown && <ImgProject src={SafetyVRImg2} showImg={false}></ImgProject>}
             </ImgContainer>
             <ProjectInfoContainer>
                 <TextContainer>
@@ -52,7 +52,7 @@ function SafetyVR (props) {
                         perception of safety.<br></br><br></br>
 
                         The results indicated that solid walls have an impact on women’s perceived safety in virtual urban environments, 
-                        and that VR can be a useful tool when designing safe cities for women. You can find the full project report <LinkTo href="./pdf/SafetyVR.pdf" download="SafetyVR.pdf" target="_blank">here</LinkTo></ProjectDescriptionReadMore>}
+                        and that VR can be a useful tool when designing safe cities for women. You can find the full project report <LinkTo href="./pdf/SafetyVR.pdf" download="SafetyVR.pdf" target="_blank"><UnderLine>here</UnderLine></LinkTo></ProjectDescriptionReadMore>}
                     <AnimationOnScroll animateIn="fadeInUp" animateOnce="true">
                             <div>
                             <AnimationOnScroll animateIn="animate__headShake" initiallyVisible="false" animateOnce="false" duration="1.5" delay="700">
@@ -69,19 +69,34 @@ function SafetyVR (props) {
 
 const ContentContainer = styled.div`
     ${ContentContainerCSS}
-    margin-top: 400px;
+    @media (max-width: 926px) {
+        display: flex;
+        margin-top: 200px;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }   
 `;
 
 const ImgContainer = styled.div`
     ${ImgContainerCSS}
+    @media (max-width: 926px) {
+        margin-top: 35px;
+    }   
 `;
 
 const ImgProject = styled.img`
     ${ImgProjectCSS}
+    @media (max-width: 926px) {
+        width: 100%;
+        display: ${props => props.showImg ? "static;": "none;"};
+    }   
 `
 
 const ProjectInfoContainer = styled.div`
     ${ProjectInfoContainerCSS}
+    @media (max-width: 926px) {
+        order: 1;
+    }   
 `;
 
 const TextContainer = styled.div`
@@ -109,6 +124,10 @@ const ReadMore = styled.button`
 
 const UnorderedList = styled.ul`
     ${UnorderedListCSS}
+`;
+
+const UnderLine = styled.span`
+    ${UnderLineCSS};
 `;
 
 const LinkTo = styled.a`

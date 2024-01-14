@@ -5,7 +5,7 @@ const ContentContainerCSS = css`
     display: flex;
     flex-direction: row;
     margin: 9%;
-    margin-bottom: 300px;
+    margin-bottom: 150px;
 `;
 
 const ImgContainerCSS = css`
@@ -35,7 +35,6 @@ const ProjectInfoContainerCSS = css`
 const TextContainerCSS = css`
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
 `;
 
 const ProjectTitleCSS = css`

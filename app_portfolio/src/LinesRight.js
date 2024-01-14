@@ -22,7 +22,9 @@ function LinesRight (props) {
 }
 
 const ContentContainer = styled.div`
-
+        @media (max-width: 1050px) {
+        display: none;
+    }   
 `
 const LineRight1 = styled.div`
     animation: 1s ${bounceAnimation};
@@ -30,7 +32,7 @@ const LineRight1 = styled.div`
     bottom: 67%;
     height: 9%;
     width: 5px;
-    position fixed;
+    position: fixed;
     background-color: ${props => props.section ? "#E38800" : "#FFFFFF"}; 
 `;
 
@@ -40,7 +42,7 @@ const LineRight2 = styled.div`
     bottom: 55%;
     height: 9%;
     width: 5px;
-    position fixed;
+    position: fixed;
     background-color: ${props => props.section ? "#E38800" : "#FFFFFF"}; 
 `;
 
@@ -51,7 +53,7 @@ const LineRight3 = styled.div`
     bottom: 43%;
     height: 9%;
     width: 5px;
-    position fixed;
+    position: fixed;
     background-color: ${props => props.section ? "#E38800" : "#FFFFFF"}; 
 `;
 
@@ -61,7 +63,7 @@ const LineRight4 = styled.div`
     bottom: 31%;
     height: 9%;
     width: 5px;
-    position fixed;
+    position: fixed;
     background-color: ${props => props.section ? "#E38800" : "#FFFFFF"}; 
 `;
 

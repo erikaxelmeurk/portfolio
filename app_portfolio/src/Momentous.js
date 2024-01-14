@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styled from "styled-components/macro";
-import UniQuizImg from "./images/UniQuiz.png";
-import UniQuizImg1 from "./images/UniQuiz1.png";
+import MomentousImg1 from "./images/Momentous1.png";
+import MomentousImg2 from "./images/Momentous2.png";
 import {UnderLineCSS, LinkToCSS, ImgContainerCSS, ContentContainerCSS, ImgProjectCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
-function UniQuiz (props) {
+function Momentous (props) {
     const [isShown, setIsShown] = useState(false);
 
     const handleClick = event => {
@@ -14,39 +14,37 @@ function UniQuiz (props) {
     return (
         <ContentContainer>
             <ImgContainer>
-                <ImgProject src={UniQuizImg} showImg={true}>
+                <ImgProject src={MomentousImg1} showImg={true}>
                 </ImgProject> 
-                {isShown && <ImgProject src={UniQuizImg1} showImg={false}></ImgProject>}
+                {isShown && <ImgProject src={MomentousImg2} showImg={false}></ImgProject>}
             </ImgContainer>
             <ProjectInfoContainer>
                 <TextContainer>
                     <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
-                        <ProjectTitle>UniQuiz</ProjectTitle>
+                        <ProjectTitle>Momentous: Shared online photo albums</ProjectTitle>
                     </AnimationOnScroll>
                     <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
                         <ProjectDescription>
-                            A multiplayer music quiz awarded with an UX-prize that lets you challenge 
-                            your friends on a quiz with music that you have all heard before. By analyzing each player's Spotify using the Spotify API, 
-                            UniQuiz generates unique playlists by combining songs that the players have in common. 
-                            We call it the music quiz that’s always fun for everyone!
+                        A web application where users can create online photo albums,
+                          upload photos and invite their friends to contribute to the albums. Built using React and a Node.js server.
                         </ProjectDescription>
                     </AnimationOnScroll>
                     <UnorderedList>
                     <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><li>React</li></AnimationOnScroll>
-                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><li>Firebase</li></AnimationOnScroll>
-                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><li>Spotify API</li></AnimationOnScroll>
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><li>Typescript</li></AnimationOnScroll>
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><li>Node.js</li></AnimationOnScroll>
                     </UnorderedList>
                     {isShown && <ProjectDescriptionReadMore> 
-                        
-                    The project was developed using a tech stack comprising React, JS/JSX, HTML5, and CSS. 
-                    To facilitate user management and enable real-time data tracking for multiplayer functionality, 
-                    Firebase was incorporated as both an account management system and a robust real-time database.
-                    The core functionality of the application revolves around creating and participating in quizzes. 
-                    The process begins with a host creating a quiz, inviting other users to join in. 
-                    The host has the authority to determine the number of tracks to be played and the duration of each track. 
-                    Leveraging the power of Spotify playlists, the application intelligently selects random songs that are common 
-                    among all players in the quiz. <br></br><br></br>
-                    Finally, like any other music quiz, the player with the highest score wins! You can find our git repository <LinkTo href="https://drive.google.com/file/d/1qVaa1uig67O4PzsRutQOxvNM8MmIwc9n/view?usp=sharing" target="_blank"><UnderLine>here</UnderLine></LinkTo></ProjectDescriptionReadMore>}
+                        In the course DH2643 Advanced Interaction Programming, I was on a project centered around 
+                        developing client-server web applications. Our primary objective was to create a user-friendly online 
+                        photo album platform that enabled seamless photo uploads and collaboration among friends.
+                        To accomplish this, we leveraged a tech stack consisting of React, Typescript, Node.js, 
+                        Express.js, Websockets, and Google Firebase Database and Storage. These technologies played a 
+                        crucial role in ensuring the smooth functioning of our application while maintaining scalability and reliability.
+                        <br></br><br></br>
+                        Within the team, my primary responsibility revolved around the backend development. 
+                        I took charge of designing and implementing the server-side architecture, crafting the APIs, 
+                        and integrating the necessary functionalities. A link to the git repository can be found <LinkTo href="https://github.com/mikaela-garde/Project-DH2643" target="_blank"><UnderLine>here</UnderLine></LinkTo></ProjectDescriptionReadMore>}
                     <AnimationOnScroll animateIn="fadeInUp" animateOnce="true">
                         <div>
                             <AnimationOnScroll animateIn="animate__headShake" initiallyVisible="false" animateOnce="false" duration="1.5" delay="700">
@@ -61,18 +59,17 @@ function UniQuiz (props) {
     )
 }
 
-const UnderLine = styled.span`
-    ${UnderLineCSS};
-`;
-
 const ContentContainer = styled.div`
     ${ContentContainerCSS}
-    margin-top: 400px;
     @media (max-width: 926px) {
         display: flex;
         flex-direction: column;
         margin-bottom: 50px;
     }   
+`;
+
+const UnderLine = styled.span`
+    ${UnderLineCSS};
 `;
 
 const ImgContainer = styled.div`
@@ -129,4 +126,4 @@ const LinkTo = styled.a`
     display: inline;
 `;
 
-export default UniQuiz;
+export default Momentous;

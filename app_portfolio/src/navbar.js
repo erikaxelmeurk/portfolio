@@ -5,19 +5,17 @@ import linkedinIcon from "./images/LinkedinIcon.png";
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar (props) {
-    const [underlinePortfolio, setUnderlinePortfolio] = useState(false);
-    const [underlinePhotography, setUnderlinePhotography] = useState(false);
+    const [underlinePortfolio, setUnderlinePortfolio] = useState("false");
+    const [underlinePhotography, setUnderlinePhotography] = useState("false");
     const location = useLocation();
 
     useEffect(() => {
-        if (window.location.href == "http://localhost:3000/") {
-            console.log("kom in i portfölj ")
-            setUnderlinePortfolio(true);
-            setUnderlinePhotography(false);
+        if (window.location.href === "https://erikmeurk.web.app/") {
+            setUnderlinePortfolio("true");
+            setUnderlinePhotography("false");
         } else {
-            setUnderlinePortfolio(false);
-            console.log("kom in i photo ")
-            setUnderlinePhotography(true);
+            setUnderlinePortfolio("false");
+            setUnderlinePhotography("true");
         }
 
     });
@@ -56,12 +54,10 @@ const NavLink = styled(Link)`
     margin-right: 5%; 
     margin-left: 5%;
     letter-spacing: 2px;
-    text-decoration: ${props => props.underline ? "underline": ""}!important;
+    text-decoration: ${props => props.underline === "true" ? "underline": ""}!important;
     text-decoration-color: #E38800!important;
     text-decoration-thickness: 2px!important;
     text-underline-offset: 5px!important;
-    a:link {
-    }
 `;
 
 const NavbarDivLeft = styled.div`
@@ -90,6 +86,9 @@ const NavbarDivRight = styled.div`
 
 const Socials = styled.div`
     display: flex;
+    @media (max-width: 768px) {
+        display: none;
+  }    
 `;
 
 const InstagramIconContainer = styled.div`
@@ -111,6 +110,9 @@ const NavbarLinkContainer = styled.div`
     top: 0;
     z-index: 1;
     margin-top: 2%;
+    @media (max-width: 1050px) {
+        position: static;
+    }   
 `;
 
 export default Navbar;

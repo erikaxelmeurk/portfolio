@@ -8,12 +8,16 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import UniQuiz from './UniQuiz';
 import WallPlanner from './WallPlanner';
 import SafetyVR from './SafetyVR';
+import ElfMyself from './ElfMyself';
 import Dumpling from './Dumpling';
+import PartyPopper from './PartyPopper';
 import Mirow from './Mirow';
 import LinesRight from './LinesRight';
 import Photography from './photography';
 import Contact from './Contact';
 import Theme from "./Theme";
+import Footer from "./Footer";
+import Momentous from "./Momentous";
 import {
   BrowserRouter as Router,
   Routes,
@@ -34,9 +38,12 @@ function App() {
                       <LinesRight/>
                       <Hero/>
                       <About/>
+                      <UniQuiz/>
+                      <Momentous/>
+                      <PartyPopper/>
+                      <ElfMyself/>
                       <SafetyVR/>
                       <WallPlanner/>
-                      <UniQuiz/>
                       <Dumpling/>
                       <Mirow/>
                       <Contact/>
@@ -48,6 +55,7 @@ function App() {
                     </div>}>
                   </Route>
               </Routes>
+              <Footer></Footer>
             </AppContainer>
           </Router>
       </ParallaxProvider>
@@ -57,13 +65,27 @@ function App() {
 
 const GlobalStyle = createGlobalStyle `
 body {
-  background-color: #161616;
+  background: linear-gradient(-45deg, #161616,#161616, #0E0E0E, #161616);
   min-height: 100vh;
+  animation: gradient 15s ease infinite;
   margin: 0;
+  
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 `;
 
 const AppContainer = styled.div`
+  overflow-x: hidden ;
 `;
 
 export default App;

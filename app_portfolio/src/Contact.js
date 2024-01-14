@@ -37,7 +37,7 @@ function Contact (props) {
             <HeroContainer>
                 <TextAndButtonContainer ref = {TextAndButtonContainerRef}>
                     <TextContainer>
-                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><ErikHero>Let's connect!</ErikHero></AnimationOnScroll>
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true" ><ErikHero>Let's connect!</ErikHero></AnimationOnScroll>
                     </TextContainer>
                     <LinkTo href="mailto:erikaxelmeurk@gmail.com" target="_blank"><AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true"><ContactBtn>contact</ContactBtn></AnimationOnScroll></LinkTo>
                 </TextAndButtonContainer>
@@ -46,34 +46,34 @@ function Contact (props) {
                 <ListSocialsContainer>
                     <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
                         <Email>
-                                <EmailIconImg src={EmailIcon} href="mailto:erikaxelmeurk@gmail.com" width="5%" height="5%"></EmailIconImg>
+                                <EmailIconImg src={EmailIcon} href="mailto:erikaxelmeurk@gmail.com" width="20px" height="20px"></EmailIconImg>
                                 <LinkTo href="mailto:erikaxelmeurk@gmail.com" target="_blank">
                                     <p>erikaxelmeurk@gmail.com</p>
                                 </LinkTo>
                         </Email>
                     </AnimationOnScroll>
 
-                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true" offset="0">
                         <LinkedIn>
-                            <LinkedInIcon src={LinkedinIcon} width="5%" height="5%"></LinkedInIcon>
+                            <LinkedInIcon src={LinkedinIcon} width="20px" height="20px"></LinkedInIcon>
                             <LinkTo href ="https://www.linkedin.com/in/erikmeurk/" target="_blank">
                                 <p>/erikmeurk</p>
                             </LinkTo>
                         </LinkedIn>
                     </AnimationOnScroll>
 
-                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true" offset="0">
                         <Instagram>
-                            <InstagramIconImg src={InstagramIcon} width="5%" height="5%"></InstagramIconImg>
+                            <InstagramIconImg src={InstagramIcon} width="20px" height="20px"></InstagramIconImg>
                             <LinkTo href="https://www.instagram.com/erikaxelmedia/" target="_blank">
                                 <p>/erikaxelmedia</p>
                             </LinkTo>
                         </Instagram>
                     </AnimationOnScroll>
 
-                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true">
+                    <AnimationOnScroll animateIn="animate__fadeInUp" animateOnce="true" offset="0">
                         <Github>
-                            <GithubImg src={GithubIcon} width="5%" height="5%"></GithubImg>
+                            <GithubImg src={GithubIcon} width="20px" height="20px"></GithubImg>
                             <LinkTo href="https://github.com/erikaxelmeurk" target="_blank">
                                 <p>/erikaxelmeurk</p>
                             </LinkTo>
@@ -89,17 +89,27 @@ const ContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     height: 100vh;
+    @media (max-width: 926px) {
+        flex-direction: column;
+        height: 100%;
+    } 
 `;
 
 const ContactSocialsContainer = styled.div`
-    width: 40%;
+
+    width: 60%;
     flex-direction: column;
     align-self: center;
+    > * {
+        margin-top: 100px;
+        margin-bottom: 50px;
+      }
 `;
 
 const ListSocialsContainer = styled.div`
     align-self: center;
     width: 70%;
+    margin-top: 0;
     > * {
         margin: 10px;
       }
@@ -169,10 +179,13 @@ const GithubImg = styled.img`
 
 
 const HeroContainer = styled.div`
-    width: 60%;
+    width: 100%;
     display: flex;
     align-self: center;
     flex-direction: column;
+    @media (max-width: 926px) {
+        width: 80%;
+    } 
 `;
 
 

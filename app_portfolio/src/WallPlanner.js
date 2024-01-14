@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from "styled-components/macro";
 import ReactPlayer from "react-player";
 import WallPlannerImg from "./images/WallPlannerImg.png";
-import {ImgProjectCSS, LinkToCSS, VideoProjectCSS,ImgContainerCSS, ContentContainerCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';
+import {UnderLineCSS, ImgProjectCSS, LinkToCSS, VideoProjectCSS,ImgContainerCSS, ContentContainerCSS, ProjectInfoContainerCSS, TextContainerCSS, ProjectTitleCSS, ProjectDescriptionCSS, SecondaryButtonCSS, UnorderedListCSS} from './styledComponents';
 import "animate.css/animate.min.css";
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 function WallPlanner (props) {
@@ -16,9 +16,9 @@ function WallPlanner (props) {
         <ContentContainer>
             <ImgContainer>
                 <VideoContainer>
-                    <ReactPlayer url="https://vimeo.com/755116600" width="80%" margin="0">
+                    <ReactPlayer url="https://vimeo.com/755116600" width="80%" margin="0" controls>
                     </ReactPlayer>
-                    {isShown && <ImgProject src={WallPlannerImg}></ImgProject>}
+                    {isShown && <ImgProject src={WallPlannerImg} showImg={false}></ImgProject>}
                 </VideoContainer>
             </ImgContainer>
             <ProjectInfoContainer>
@@ -46,7 +46,7 @@ function WallPlanner (props) {
                         two applications in terms of usability, ease of use and user experience.<br></br><br></br>
 
                         The results indicated that AR does indeed have a good
-                         potential to be a viable tool for gallery wall planning. You can find our project report <LinkTo href="./pdf/WallPlanner.pdf" download="WallPlanner.pdf" target="_blank">here</LinkTo></ProjectDescriptionReadMore>}
+                         potential to be a viable tool for gallery wall planning. You can find our project report <LinkTo href="./pdf/WallPlanner.pdf" download="WallPlanner.pdf" target="_blank"><UnderLine>here</UnderLine></LinkTo></ProjectDescriptionReadMore>}
                     <AnimationOnScroll animateIn="fadeInUp" animateOnce="true">
                         <div>
                         <AnimationOnScroll animateIn="animate__headShake" initiallyVisible="false" animateOnce="false" duration="1.5" delay="700">
@@ -64,25 +64,50 @@ function WallPlanner (props) {
 
 const ContentContainer = styled.div`
     ${ContentContainerCSS}
+    @media (max-width: 926px) {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }   
 `;
 
 const ImgContainer = styled.div`
     ${ImgContainerCSS}
+    @media (max-width: 926px) {
+        margin-top: 35px;
+        width: 400px;
+        height: 320px;
+    }   
+`;
+
+const UnderLine = styled.span`
+    ${UnderLineCSS};
 `;
 
 const ImgProject = styled.img`
     ${ImgProjectCSS}
+    @media (max-width: 926px) {
+        width: 100%;
+        display: ${props => props.showImg ? "static;": "none;"};
+    }   
 `
 const VideoContainer = styled.div`
     ${VideoProjectCSS}
+    @media (max-width: 926px) {
+        width: 100%;
+    }   
 `;
 
 const ProjectInfoContainer = styled.div`
     ${ProjectInfoContainerCSS}
+    @media (max-width: 926px) {
+        order: 1;
+    }   
 `;
 
 const TextContainer = styled.div`
-    ${TextContainerCSS}
+    ${TextContainerCSS};
+    margin-top: 40px;
 `;
 
 const ProjectTitle = styled.h1`
